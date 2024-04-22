@@ -1,0 +1,17 @@
+project:
+  title: "Harmonized Learning Outcomes"
+  type: datapage
+
+format:
+  datapage-html
+
+execute: 
+  echo: false
+  message: false
+  warning: false
+  error: false
+
+redivis:
+  user: datapages
+  dataset: Harmonized Learning Outcomes
+  table: hlo

@@ -1,0 +1,32 @@
+---
+about:
+  template: trestles
+  image: images/map.webp
+  image-width: 100%
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/datapages/hlo
+    - icon: globe
+      text: Data Catalog entry
+      href: https://datacatalog.worldbank.org/search/dataset/0038001
+    - icon: file-text
+      text: Publication
+      href: https://www.nature.com/articles/s41586-021-03323-7
+
+citation:
+  type: article-journal
+  title: Measuring human capital using global learning data
+  issued: 2021
+  author:
+    - Noam Angrist
+    - Simeon Djankov
+    - Pinelopi K. Goldberg
+    - Harry A. Patrinos
+  container-title: Nature
+  doi: 10.1038/s41586-021-03323-7
+---
+
+## Harmonized Learning Outcomes (HLO) database
+
+Learning metrics that are comparable for countries globally are necessary to understand and track the formation of human capital. The increasing use of international achievement tests is an important step in this direction. However, such tests are administered primarily in high-income countries, limiting our ability to analyze learning patterns in low- and middle-income countries that may have the most to gain from the formation of human capital. The Harmonized Learning Outcomes (HLO) database bridges this gap by constructing a globally comparable database of 164 countries from 2000 to 2017. The data represent 98% of the global population and developing economies comprise two-thirds of the included countries. The data is publicly available and will be updated regularly.
