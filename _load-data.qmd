@@ -38,12 +38,12 @@ d = transpose(data)
 distinct_cutoff = 10
 
 disc_types = ['string', 'boolean']
-disc = vars.filter(d => disc_types.includes(d.type) && d.statistics.numDistinct <= distinct_cutoff).map(d => [d.label, d.name])
-disc_vars = new Map([['', null]].concat(disc))
+disc_vars = vars.filter(d => disc_types.includes(d.type) && d.statistics.numDistinct <= distinct_cutoff).map(d => [d.label, d.name])
+disc_opts = new Map([['', null]].concat(disc_vars))
 
 cont_types = ['integer', 'float', 'date', 'datetime', 'time']
-cont = vars.filter(d => cont_types.includes(d.type) && d.statistics.numDistinct > distinct_cutoff).map(d => [d.label, d.name])
-cont_vars = new Map(cont)
+cont_vars = vars.filter(d => cont_types.includes(d.type) && d.statistics.numDistinct > distinct_cutoff).map(d => [d.label, d.name])
+cont_opts = new Map(cont_vars)
 
 //function getTypeVars(obj, type) {
 //  return Object.entries(obj)
