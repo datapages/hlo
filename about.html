@@ -163,6 +163,7 @@ background: var(--bs-light);
   title = {Measuring Human Capital Using Global Learning Data},
   journal = {Nature},
   date = {2021},
+  url = {https://datapages.github.io/hlo//about.html},
   doi = {10.1038/s41586-021-03323-7},
   langid = {en}
 }
@@ -247,7 +248,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/datapages\.github\.io\/hlo\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
