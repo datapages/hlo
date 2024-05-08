@@ -1,0 +1,53 @@
+```{ojs}
+import {interval} from '@mootari/range-slider' // two ended slider
+```
+
+```{ojs}
+//| panel: input
+
+viewof map_var = Inputs.select(cont_opts, {value: Array.from(cont_opts.values())[1], label: "Measure"})
+viewof years = interval([d3.min(data.year), d3.max(data.year)], {step: 1, label: "Years"})
+viewof bins = Inputs.range([2, 10], {value: 5, step: 1, label: "Bins"})
+```
+
+```{ojs}
+world = FileAttachment("countries-110m.json").json()
+countries = topojson.feature(world, world.objects.countries)
+//land = topojson.feature(world, world.objects.land)
+
+slim3 = FileAttachment("slim-3.json").json()
+codes = new Map(slim3.map(d => [d["country-code"], d["alpha-3"]]))
+
+td = transpose(data)
+tdf = td.filter(d => d.year >= years[0] && d.year <= years[1])
+dg = d3.rollup(tdf, v => d3.mean(v, d => d[map_var]), d => d.code)
+
+viewof map = Plot.plot({
+  style: { fontFamily: "var(--sans-serif)" },
+  projection: "equal-earth",
+  marks: [
+    Plot.sphere(),
+    Plot.graticule(),
+    Plot.geo(countries, Plot.centroid({
+      stroke: "black",
+      strokeWidth: 0.5,
+      fill: d => dg.get(codes.get(d.id)),
+      tip: true,
+      channels: {country: d => d.properties.name}
+    })),
+  ],
+  color: {
+    type: "quantile",
+    n: bins,
+    scheme: "blues", 
+    unknown: "#ddd",
+    legend: true, 
+    label: "Mean " + map_var,
+    tickFormat: d => Math.round(d)
+  }
+})
+
+html`<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center;">
+ <div style="flex-basis: 50%"> ${viewof map} </div>
+</div>`
+```
